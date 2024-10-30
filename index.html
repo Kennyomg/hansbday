@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voor Hans Halff - Van harte gefeliciteerd!!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        #app,
+        body,
+        html {
+            position: relative;
+            width: 100vw;
+            height: 100dvh;
+            overflow: hidden;
+            margin: 0;
+            font-family: DynaPuff, sans-serif;
+        }
+
+        h1 {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            /* font-size: 3rem; */
+            color: #274dff;
+            margin: auto;
+            letter-spacing: 0.0015em;
+            font-size: 5em;
+            text-shadow: 0 1px #8da1ff, -1px 0 #c0cbff, -1px 2px #8da1ff, -2px 1px #c0cbff,
+                -2px 3px #8da1ff, -3px 2px #c0cbff, -3px 4px #8da1ff, -4px 3px #c0cbff,
+                -4px 5px #8da1ff, -5px 4px #c0cbff, -5px 6px #8da1ff, -6px 5px #c0cbff,
+                -6px 7px #8da1ff, -7px 6px #c0cbff, -7px 8px #8da1ff, -8px 7px #c0cbff;
+            text-align: center;
+        }
+
+        iframe {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes confetti-spin {
+            0% {
+                transform: rotate3d(0, 1, 1, 360deg);
+            }
+
+            50% {
+                transform: rotate3d(0, 1, 1, 180deg);
+            }
+
+            100% {
+                transform: rotate3d(0, 0, 0, 0);
+            }
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-10vh);
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            animation: confetti-fall 3s ease-out infinite;
+            width: 20px;
+            height: 20px;
+        }
+
+        .confetti::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color);
+            animation-delay: var(--delay);
+            animation: confetti-spin var(--duration) linear infinite;
+        }
+
+        .confetti:nth-child(odd):before {
+            animation-fill-mode: backwards;
+            /* background-color: var(--color);
+            animation-delay: var(--delay); */
+            /* animation-duration: var(--duration); */
+        }
+
+        /* .confetti:nth-child(even):before {
+            background-color: var(--color);
+            animation-delay: var(--delay);
+        } */
+
+        .confetti {
+            top: -10vh;
+            left: var(--left);
+            animation-delay: var(--delay);
+            width: var(--size);
+            height: var(--size);
+        }
+
+        #confetti-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 1rem;
+            background-color: #FF6D00;
+            color: white;
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+            display: none;
+            z-index: 100;
+        }
+
+        .show {
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="app">
+        <iframe id="yt-iframe" width="100%" height="100%"
+            src="https://www.youtube-nocookie.com/embed/dlXwd5PhmRs?enablejsapi=1&autoplay=1&controls=0&loop=1&disablekb=1&modestbranding=1&rel=0&showinfo=0&color=white&iv_load_policy=3&playlist=dlXwd5PhmRs"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <button id="confetti-btn">Meer confetti!</button>
+        <h1>GEFELICITEERD MET JE 74e VERJAARDAG!!!<br/>(of was het nou 24e?)</h1>
+    </main>
+    <script type="text/javascript" defer>
+        let btn = document.getElementById('confetti-btn');
+        let confettiCount = 0;
+        btn.addEventListener('click', () => {
+            const spawmAmount = Math.floor(Math.random() * 10)
+            for (let i = 0; i <= spawmAmount * 10; ++i) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.setProperty('--left', `${Math.random() * 100 + 1}%`);
+                confetti.style.setProperty('--delay', `-${Math.random() * 5}s`);
+                confetti.style.setProperty('--size', `${Math.random() * 10 + 10}px`);
+                confetti.style.setProperty('--color', `hsl(${Math.random() * 360}, 100%, 50%)`);
+                confetti.style.setProperty('--duration', `${Math.random() * 5 + 1}s`);
+                document.getElementById('app').appendChild(confetti);
+            }
+            confettiCount += spawmAmount;
+            btn.innerText = `Meer confetti! (${confettiCount})`;
+        });
+    </script>
+
+    </script>
+    <script type="text/javascript">
+        const iframeId = 'yt-iframe';
+        const tag = document.createElement('script');
+        tag.id = 'iframe-demo';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player(iframeId, {
+                width: '100%',
+                height: '100%',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                },
+                videoId: 'dlXwd5PhmRs'
+            });
+        }
+        function onPlayerReady(event) {
+            console.log('player ready');
+            document.getElementById(iframeId).style.borderColor = '#FF6D00';
+        }
+        function stateChangeLogic(playerStatus) {
+            
+            let isPlaying = false;
+            const btn = document.getElementById('confetti-btn');
+
+            if (playerStatus == -1) {
+                isPlaying = false; // unstarted
+            } else if (playerStatus == 0) {
+                isPlaying = false; // ended
+            } else if (playerStatus == 1) {
+                isPlaying = true; // playing
+            } else if (playerStatus == 2) {
+                isPlaying = false; // paused
+            } else if (playerStatus == 3) {
+                 // buffering = purple
+            } else if (playerStatus == 5) {
+                 // video cued = orange
+            }
+
+            if (isPlaying) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        }
+        function onPlayerStateChange(event) {
+            console.log('player state change', event.data);
+            stateChangeLogic(event.data);
+        }
+    </script>
+</body>
+
+</html>
