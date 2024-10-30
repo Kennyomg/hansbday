@@ -143,7 +143,7 @@
         btn.addEventListener('click', () => {
             const spawmAmount = Math.floor(Math.random() * 10) + 1;
             const frag = document.createDocumentFragment();
-            for (let i = 0; i <= spawmAmount * 10; ++i) {
+            for (let i = 0; i < spawmAmount; ++i) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
                 confetti.style.setProperty('--left', `${Math.random() * 100 + 1}%`);
