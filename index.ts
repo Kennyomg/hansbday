@@ -7,7 +7,7 @@ serve({
         const path = new URL(req.url).pathname;
         let filePath = BASE_PATH + path;
         if (path === "/") {
-            filePath = BASE_PATH + "/index.html";
+            filePath = "./index.html";
         }
 
         const f = file(filePath);

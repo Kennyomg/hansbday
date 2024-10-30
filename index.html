@@ -95,15 +95,7 @@
 
         .confetti:nth-child(odd):before {
             animation-fill-mode: backwards;
-            /* background-color: var(--color);
-            animation-delay: var(--delay); */
-            /* animation-duration: var(--duration); */
         }
-
-        /* .confetti:nth-child(even):before {
-            background-color: var(--color);
-            animation-delay: var(--delay);
-        } */
 
         .confetti {
             top: -10vh;
@@ -146,9 +138,11 @@
     </main>
     <script type="text/javascript" defer>
         let btn = document.getElementById('confetti-btn');
+        let app = document.getElementById('app');
         let confettiCount = 0;
         btn.addEventListener('click', () => {
-            const spawmAmount = Math.floor(Math.random() * 10)
+            const spawmAmount = Math.floor(Math.random() * 10) + 1;
+            const frag = document.createDocumentFragment();
             for (let i = 0; i <= spawmAmount * 10; ++i) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
@@ -157,8 +151,9 @@
                 confetti.style.setProperty('--size', `${Math.random() * 10 + 10}px`);
                 confetti.style.setProperty('--color', `hsl(${Math.random() * 360}, 100%, 50%)`);
                 confetti.style.setProperty('--duration', `${Math.random() * 5 + 1}s`);
-                document.getElementById('app').appendChild(confetti);
+                frag.appendChild(confetti);
             }
+            app.appendChild(frag);
             confettiCount += spawmAmount;
             btn.innerText = `Meer confetti! (${confettiCount})`;
         });
